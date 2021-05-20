@@ -30,8 +30,8 @@ Dans ce travail de laboratoire, vous allez configurer des routeurs Cisco émulé
 -	Capture Sniffer avec filtres précis sur la communication à épier
 -	Activation du mode « debug » pour certaines fonctions du routeur
 -	Observation des protocoles IPSec
- 
- 
+
+
 ## Matériel
 
 Le logiciel d'émulation à utiliser c'est eve-ng (vous l'avez déjà employé). Vous trouverez ici un [guide très condensé](files/Manuel_EVE-NG.pdf) pour l'utilisation et l'installation de eve-ng.
@@ -108,6 +108,14 @@ Un « protocol » différent de `up` indique la plupart du temps que l’interfa
 
 **Réponse :**  
 
+Pas de problèmes.
+
+<img src="images/Q1-r1.png" style="zoom: 70%;" />
+
+<img src="images/Q1-r2.png" style="zoom: 70%;" />
+
+<img src="images/Q1-isp.png" style="zoom: 70%;" />
+
 ---
 
 
@@ -145,6 +153,16 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 
 **Réponse :**  
 
+Pas de problèmes.
+
+<img src="images/Q2-r1-isp.png" style="zoom: 70%;" />
+
+<img src="images/Q2-r2-isp.png" style="zoom: 70%;" />
+
+<img src="images/Q2-r2-r1.png" style="zoom: 70%;" />
+
+<img src="images/Q2-r2-vpc.png" style="zoom: 70%;" />
+
 ---
 
 - Activation de « debug » et analyse des messages ping.
@@ -167,6 +185,10 @@ Pour déclencher et pratiquer les captures vous allez « pinger » votre routeur
 ---
 
 **Screenshots :**  
+
+<img src="images/Q3-r1-debug.png" style="zoom: 70%;" />
+
+<img src="images/Q3-ws.png" style="zoom: 70%;" />
 
 ---
 
@@ -239,6 +261,12 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 **Réponse :**  
 
+<mark>TO DO</mark>
+
+<img src="images/Q4-r1.png" style="zoom: 70%;" />
+
+<img src="images/Q4-r2.png" style="zoom: 70%;" />
+
 ---
 
 
@@ -247,6 +275,12 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 ---
 
 **Réponse :**  
+
+<mark>TO DO</mark>
+
+<img src="images/Q5-r1.png" style="zoom: 70%;" />
+
+<img src="images/Q5-r2.png" style="zoom: 70%;" />
 
 ---
 
@@ -340,6 +374,12 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 ---
 
 **Réponse :**  
+
+<img src="images/Q7-ping.png" style="zoom: 70%;" />
+
+<img src="images/Q7-debug-r1.png" style="zoom: 60%;" />
+
+<img src="images/Q7-ws.png" style="zoom: 70%;" />
 
 ---
 
