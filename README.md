@@ -261,7 +261,9 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 **Réponse :**  
 
-<mark>TO DO</mark>
+On peut remarquer que `RX2` supporte deux type de protocole/algorithme pour la connexion.
+
+Nous remarquons aussi que `RX1` et `RX2` on une policy en commun, ce qui leur permet de créer le tunnel.
 
 <img src="images/Q4-r1.png" style="zoom: 70%;" />
 
@@ -269,14 +271,13 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 ---
 
-
 **Question 5: Utilisez la commande `show crypto isakmp key` et faites part de vos remarques :**
 
 ---
 
 **Réponse :**  
 
-<mark>TO DO</mark>
+On remarque qu'ils ont la même clé.
 
 <img src="images/Q5-r1.png" style="zoom: 70%;" />
 
@@ -381,6 +382,10 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 
 <img src="images/Q7-ws.png" style="zoom: 70%;" />
 
+Nous remarquons que les paquets `ICMP` échangés sont de type `ISAKMP`, et que donc notre config a fonctionné.
+
+
+
 ---
 
 **Question 7: Reportez dans votre rapport une petite explication concernant les différents « timers » utilisés par IKE et IPsec dans cet exercice (recherche Web). :**
@@ -389,6 +394,10 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 
 **Réponse :**  
 
+` security-association lifetime`: Est le temps de validité de la clé de chiffrement. Après ce temps une nouvelle clé est négociée entre les parties.
+
+`security-association idle-time`: Le temps maximum d'inactivité sur une SA. Cela permet de libérer les ressources de la SA non utilisée.
+
 ---
 
 
@@ -396,12 +405,23 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 
 En vous appuyant sur les notions vues en cours et vos observations en laboratoire, essayez de répondre aux questions. À chaque fois, expliquez comment vous avez fait pour déterminer la réponse exacte (capture, config, théorie, ou autre).
 
-
 **Question 8: Déterminez quel(s) type(s) de protocole VPN a (ont) été mis en œuvre (IKE, ESP, AH, ou autre).**
 
 ---
 
 **Réponse :**  
+
+Encapsulation Security Payload (ESP), car défini lors de la configuration.
+
+````
+crypto ipsec transform-set STRONG esp-aes 192 esp-sha-hmac mode tunnel
+````
+
+Preuve:
+
+<img src="images/Q8.png" style="zoom: 70%;" />
+
+
 
 ---
 
@@ -412,8 +432,19 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
----
+Tunnel, car défini lors de la configuration.
 
+````
+crypto ipsec transform-set STRONG esp-aes 192 esp-sha-hmac mode tunnel
+````
+
+Preuve:
+
+<img src="images/Q9.png" style="zoom: 70%;" />
+
+
+
+---
 
 **Question 10: Expliquez quelles sont les parties du paquet qui sont chiffrées. Donnez l’algorithme cryptographique correspondant.**
 
@@ -421,14 +452,25 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
----
+Du cours: Avec le protocole `ESP` et en mode tunnel, tout le paquet (de base) est chiffré.
 
+<img src="images/Q10.png" style="zoom: 70%;" />
+
+Algorithme de chiffrement: `AES` (des captures précédentes)
+
+---
 
 **Question 11: Expliquez quelles sont les parties du paquet qui sont authentifiées. Donnez l’algorithme cryptographique correspondant.**
 
 ---
 
 **Réponse :**  
+
+Du cours: Avec le protocole `ESP` et en mode tunnel, tout le paquet (de base) est authentifié.
+
+<img src="images/Q10.png" style="zoom: 70%;" />
+
+Algorithme de chiffrement: `sha-hmac`(des captures précédentes)
 
 ---
 
@@ -438,5 +480,13 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
+
+Les données.
+
+De https://sylvestre.ledru.info/howto/securite/tunnels_et_vpn/node28.html
+
+````
+Les données d'authentification contiennent la valeur de vérification d'intégrité (ICV) permettant de vérifier l'authenticité des données du paquet. 
+````
 
 ---
